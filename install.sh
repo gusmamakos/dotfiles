@@ -7,4 +7,4 @@ echo 'eval "$(starship init bash)"' >> ~/.bashrc
 
 # apply a startship preset
 mkdir -p ~/.config
-starship preset gruvbox-rainbow -o ~/.config/starship.toml
+ln -s ~/source/dotfiles/starship/starship.toml ~/.config/starship.toml
