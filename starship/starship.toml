@@ -111,17 +111,17 @@ am_or_rebase = "AM/REBASE"
 
 [git_status]
 style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[($ahead_behind \($all_status\) )](fg:color_fg0 bg:color_aqua)]($style)'
 conflicted = ' conflicts'
-ahead = ' 🏎💨⇡${count}'
-diverged = ' 😵⇕⇡${ahead_count}⇣${behind_count}'
-behind = ' 😰⇣${count}'
-untracked = ' untracked:${count}'
-stashed = ' stashed:${count}'
-modified = ' modified:${count}'
-staged = ' staged:${count}'
-renamed = ' renamed:${count}'
-deleted = ' deleted:${count}'
+ahead = 'ahead:${count}'
+diverged = 'diverged:${ahead_count}⇣${behind_count}'
+behind = 'behind:${count}'
+untracked = 'untracked:${count}'
+stashed = 'stashed:${count}'
+modified = 'modified:${count}'
+staged = 'staged:${count}'
+renamed = 'renamed:${count}'
+deleted = 'deleted:${count}'
 
 [nodejs]
 symbol = ""
