@@ -111,7 +111,7 @@ am_or_rebase = "AM/REBASE"
 
 [git_status]
 style = "bg:color_aqua"
-format = '[[($ahead_behind \($all_status\) )](fg:color_fg0 bg:color_aqua)]($style)'
+format = '[[($ahead_behind $all_status )](fg:color_fg0 bg:color_aqua)]($style)'
 conflicted = ' conflicts'
 ahead = 'ahead:${count}'
 diverged = 'diverged:${ahead_count}⇣${behind_count}'
