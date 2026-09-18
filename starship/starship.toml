@@ -8,6 +8,7 @@ $username\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
+$git_state\
 $git_status\
 [](fg:color_aqua bg:color_blue)\
 $c\
@@ -25,17 +26,17 @@ $python\
 $docker_context\
 $conda\
 $pixi\
+$azure\
+$aws\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
-$azure
-$aws
 $line_break$character"""
 
 palette = 'gruvbox_dark'
 
 [palettes.gruvbox_dark]
-color_fg0 = '#fbf1c7'
+color_fg0 = '#000000'
 color_bg1 = '#3c3836'
 color_bg3 = '#665c54'
 color_blue = '#458588'
@@ -98,9 +99,29 @@ symbol = ""
 style = "bg:color_aqua"
 format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+rebase = "REBASING"
+merge = "MERGING"
+revert = "REVERTING"
+cherry_pick = '[🍒 PICKING](bold red)'
+bisect = "BISECTING"
+am = "AM"
+am_or_rebase = "AM/REBASE"
+
 [git_status]
 style = "bg:color_aqua"
 format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+conflicted = ' conflicts'
+ahead = ' 🏎💨⇡${count}'
+diverged = ' 😵⇕⇡${ahead_count}⇣${behind_count}'
+behind = ' 😰⇣${count}'
+untracked = ' untracked:${count}'
+stashed = ' stashed:${count}'
+modified = ' modified:${count}'
+staged = ' staged:${count}'
+renamed = ' renamed:${count}'
+deleted = ' deleted:${count}'
 
 [nodejs]
 symbol = ""
@@ -110,7 +131,7 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 [python]
 symbol = ""
 style = "bg:color_blue"
-format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+format = '[[ $symbol( $version) (\($virtualenv\))](fg:color_fg0 bg:color_blue)]($style)'
 
 [docker_context]
 symbol = ""
@@ -141,11 +162,12 @@ vimcmd_visual_symbol = '[](bold fg:color_yellow)'
 
 [azure]
 disabled = false
-format = 'on [$symbol($subscription)]($style) '
+format = '[[ $symbol($subscription) ](fg:#83a598 bg:color_bg3)]($style)'
 symbol = '󰠅 '
 style = 'blue bold'
 
 [aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
+disabled = false
+format = '[[ $symbol($profile)(\($region\) )](fg:#83a598 bg:color_bg3)]($style)'
 style = 'bold blue'
 symbol = '🅰 '
